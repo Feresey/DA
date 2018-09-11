@@ -14,8 +14,8 @@ int main()
     {
         if (input != "")
         {
-            keys1[total_lines] = AddKey(input, lines, total_lines);
-            // cout << *keys1[total_lines].line << endl; 
+            keys1[total_lines] = AddKey(input, &lines[total_lines]);
+            cout << *keys1[total_lines].line << endl; 
             total_lines++;
         }
     }

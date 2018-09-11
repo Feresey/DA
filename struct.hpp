@@ -14,6 +14,6 @@ typedef struct
     string *line;
 } TKey;
 
-TKey AddKey(string input, string *lines, int count);
+TKey AddKey(string input, string* line);
 
 #endif

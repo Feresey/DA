@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-TKey AddKey(string input, string *lines, int count)
+TKey AddKey(string input, string *line)
 {
     TKey key;
     key.line = new string;
@@ -16,11 +16,11 @@ TKey AddKey(string input, string *lines, int count)
     key.mounth = stoi(input.substr(0, input.find(delimiter)));
     input.erase(0, input.find(delimiter) + 1);
 
-    key.mounth = stoi(input.substr(0, input.find(delimiter)));
+    key.mounth = stoi(input.substr(0, input.find(tab)));
     input.erase(0, input.find(tab) + 1);
 
-    lines[count]=input;
-    key.line = &lines[count];
+    *line=input;
+    key.line = line;
     // cout << *key.line << endl;
 
     return key;
