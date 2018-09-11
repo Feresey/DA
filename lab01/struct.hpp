@@ -4,16 +4,16 @@
 
 using namespace std;
 
-const int MAX=1000,LEN=64;
+const int MAX = 1000;
+const int LEN = 64;
+const int DATE = 3; //Day, mounth and year
 
 typedef struct
 {
-    int day;
-    int mounth;
-    int year;
+    int time[3];
     string *line;
 } TKey;
 
-TKey AddKey(string input, string* line);
+TKey AddKey(string input, string *line);
 
 #endif
