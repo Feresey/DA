@@ -5,8 +5,10 @@ using namespace std;
 
 void RadixSort(const TKey *buf1, TKey *buf2, const int keyname)
 {
+    bool if_max_bit_place = false; //Достигнут максимальный разряд числа
     int current_bit = 1;
     int write_lines = 0;
+    //todo данные будут перезаписываться, если во втором буфере они уже на своём месте
     do
     {
         for (int i = 0; i < DECIMAL; i++)
