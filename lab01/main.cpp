@@ -3,21 +3,22 @@
 
 using namespace std;
 
-void RadixSort(TKey *buf1, TKey *buf2, int keyname)
-{
-    bool if_max_bit_place = false; //Достигнут максимальный разряд числа
-    int current_bit = 10;
+// void RadixSort(TKey *buf1, TKey *buf2, int keyname)
+// {
+//     bool if_max_bit_place = false; //Достигнут максимальный разряд числа
+//     int current_bit = 10;
 
-    for (int i = 0; i < DECIMAL; i++)
-    {
-    }
-}
+//     for (int i = 0; i < DECIMAL; i++)
+//     {
+//     }
+// }
 
 int main()
 {
     int total_lines = 0;
 
     string *lines = new string[MAX];
+
     string input;
 
     TKey *keys1 = new TKey[MAX];
@@ -28,11 +29,14 @@ int main()
         if (input != "")
         {
             keys1[total_lines] = AddKey(input, &lines[total_lines]);
+            cout << *keys1[total_lines].line << endl;
             total_lines++;
         }
     }
 
-    RadixSort(keys1, keys2, DAY);
-
+    // RadixSort(keys1, keys2, DAY);
+    delete[] lines;
+    delete[] keys1;
+    delete[] keys2;
     return 0;
 }

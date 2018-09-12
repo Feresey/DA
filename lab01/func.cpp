@@ -6,7 +6,6 @@ using namespace std;
 TKey AddKey(string input, string *line)
 {
     TKey key;
-    key.line = new string;
 
     char delimiter[2] = {'.', '\t'};
     int prev_pos = -1, pos = input.find(delimiter[0]);
@@ -23,7 +22,6 @@ TKey AddKey(string input, string *line)
 
     *line = input.substr(pos + 1, input.length() - 1);
     key.line = line;
-    // cout << *key.line << endl;
 
     return key;
 }
