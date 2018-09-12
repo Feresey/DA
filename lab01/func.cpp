@@ -9,21 +9,19 @@ TKey AddKey(string input, string *line)
     key.line = new string;
 
     char delimiter[2] = {'.', '\t'};
-    int pos;
+    int prev_pos = -1, pos = input.find(delimiter[0]);
 
-    pos = input.find(delimiter[0]);
-    key.time[0] = stoi(input.substr(0, pos)); //day
-    input.erase(0, pos + 1);
+    key.date[DAY] = stoi(input.substr(prev_pos + 1, pos - prev_pos)); //day
+    prev_pos = pos;
+    pos = input.find(delimiter[0], pos + 1);
 
-    pos = input.find(delimiter[0]);
-    key.time[1] = stoi(input.substr(0, pos)); //month
-    input.erase(0, pos + 1);
+    key.date[MONTH] = stoi(input.substr(prev_pos + 1, pos - prev_pos)); //month
+    prev_pos = pos;
+    pos = input.find(delimiter[1], pos + 1);
 
-    pos = input.find(delimiter[1]);
-    key.time[2] = stoi(input.substr(0, pos)); //year
-    input.erase(0, pos + 1);
+    key.date[YEAR] = stoi(input.substr(prev_pos + 1, pos - prev_pos)); //year
 
-    *line = input;
+    *line = input.substr(pos + 1, input.length() - 1);
     key.line = line;
     // cout << *key.line << endl;
 
