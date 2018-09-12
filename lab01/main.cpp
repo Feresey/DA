@@ -3,15 +3,25 @@
 
 using namespace std;
 
-// void RadixSort(TKey *buf1, TKey *buf2, int keyname)
-// {
-//     bool if_max_bit_place = false; //Достигнут максимальный разряд числа
-//     int current_bit = 10;
-
-//     for (int i = 0; i < DECIMAL; i++)
-//     {
-//     }
-// }
+void RadixSort(const TKey *buf1, TKey *buf2, const int keyname)
+{
+    int current_bit = 1;
+    int write_lines = 0;
+    do
+    {
+        for (int i = 0; i < DECIMAL; i++)
+        {
+            for (int item = 0; item < MAX; i++)
+            {
+                if (buf1[item].date[keyname] % (current_bit * DECIMAL) / current_bit == i)
+                {
+                    buf2[write_lines++] = buf1[i];
+                }
+            }
+            current_bit *= DECIMAL;
+        }
+    } while (write_lines != 0);
+}
 
 int main()
 {
