@@ -12,8 +12,8 @@ const int DECIMAL = 10;
 
 typedef struct
 {
-    int date[DATE_LENGTH];
-    string *line;
+    int date[DATE_LENGTH]; //Day, mounth and year
+    string *line; //указатель на строку (для экономии памяти)
 } TKey;
 
 TKey AddKey(string input, string *line);

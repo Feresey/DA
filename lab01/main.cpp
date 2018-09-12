@@ -3,32 +3,35 @@
 
 using namespace std;
 
-void RadixSort(const TKey *buf1, TKey *buf2, const int keyname)
+bool RadixSort(const TKey *buf1, TKey *buf2, int date, int current_bit)
 {
-    bool if_max_bit_place = false; //Достигнут максимальный разряд числа
-    int current_bit = 1;
+    bool is_max_bit_place = true; //Достигнут максимальный разряд числа
     int write_lines = 0;
+    // int date = 0; //для переключения между днём, месяцем и годом
+
     //todo данные будут перезаписываться, если во втором буфере они уже на своём месте
-    do
+
+    is_max_bit_place = false;
+    for (int radix = 0; radix < 10; radix++) //пробег по цифрам
     {
-        for (int i = 0; i < DECIMAL; i++)
+        for (int item = 0; item < MAX; item++) //для всех элеменов buf1
         {
-            for (int item = 0; item < MAX; i++)
+            if (buf1[item].date[date] / current_bit % DECIMAL == radix)
             {
-                if (buf1[item].date[keyname] % (current_bit * DECIMAL) / current_bit == i)
+                if (is_max_bit_place)
                 {
-                    buf2[write_lines++] = buf1[i];
+                    is_max_bit_place = true;
                 }
             }
-            current_bit *= DECIMAL;
         }
-    } while (write_lines != 0);
+    }
+    return is_max_bit_place;
 }
 
 int main()
 {
     int total_lines = 0;
-
+    int bit = 1;
     string *lines = new string[MAX];
 
     string input;
@@ -45,8 +48,14 @@ int main()
             total_lines++;
         }
     }
-
-    // RadixSort(keys1, keys2, DAY);
+    for (int time = 0; time < DATE_LENGTH; time++)
+    {
+        bit = 1;
+        while (RadixSort(keys1, keys2, time, bit))
+        {
+            bit *= DECIMAL;
+        }
+    }
     delete[] lines;
     delete[] keys1;
     delete[] keys2;
