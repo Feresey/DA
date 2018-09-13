@@ -9,7 +9,7 @@ bool RadixSort(const TKey *buf1, TKey *buf2, int date, int current_bit)
     int write_lines = 0;
     // int date = 0; //для переключения между днём, месяцем и годом
 
-    //todo данные будут перезаписываться, если во втором буфере они уже на своём месте
+    //todo данные будут перезаписываться, если во втором буфере они уже на своём мест
 
     is_max_bit_place = false;
     for (int radix = 0; radix < 10; radix++) //пробег по цифрам
