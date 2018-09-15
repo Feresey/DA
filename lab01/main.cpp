@@ -2,7 +2,10 @@
 #include "struct.hpp"
 
 using namespace std;
+
 int TOTAL_LINES = 0;
+
+
 void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit)
 {
     int write_lines = 0;
