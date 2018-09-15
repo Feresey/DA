@@ -2,8 +2,6 @@
 #define STRUCT_H
 #include <iostream>
 
-using namespace std;
-
 const int MAX = 1000;
 const int LEN = 64;
 const int DATE_LENGTH = 3; //Day, mounth and year
@@ -14,11 +12,13 @@ const int DECIMAL = 10;
 typedef struct
 {
     int date[DATE_LENGTH]; //Day, mounth and year
-    string *line;          //указатель на строку (для экономии памяти)
+    std::string *line;     //указатель на строку (для экономии памяти)
 } TKey;
 
-void prnt(TKey *a);
+void Prnt(TKey *a);
 
-TKey AddKey(string input, string *line);
+TKey AddKey(std::string input, std::string *line);
+
+void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit);
 
 #endif //STRUCT_H

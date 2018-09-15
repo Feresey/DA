@@ -3,34 +3,35 @@
 
 using namespace std;
 int TOTAL_LINES = 0;
-
-// void prnt(TKey *a);
-
 void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit)
 {
     int write_lines = 0;
     int digit = 0;
-    prnt(buf1);
-    // cout << "write" << endl;
+    // Prnt(buf1);
     while (write_lines < TOTAL_LINES)
     {
         for (int item = 0; item < TOTAL_LINES; item++) //для всех элеменов buf1
         {
-            // cout << 'for '<< item<<endl;
             if ((buf1[item].date[date] / current_bit) % DECIMAL == digit) // равна ли цифра текущей проверяемой
             {
-                // if (buf1[item].line != buf2[write_lines].line) //защита от перезаписи
-                // {
                 buf2[write_lines] = buf1[item];
-                cout << "item " << item << " bit " << current_bit << " date " << date << " digit " << digit << ' ' << *buf1[item].line << endl;
+                // cout << "item " << item << " bit " << current_bit << " date " << date << " digit " << digit << ' ' << *buf1[item].line << endl;
 
-                // }
                 write_lines++;
             }
         }
         digit++; //увеличение проверяемой цифры на 1
     }
-    cout << endl;
+    // cout << endl;
+}
+
+void Prnt(TKey *a)
+{
+
+    for (int i = 0; i < TOTAL_LINES; i++)
+    {
+        std::cout << a[i].date[0] << '.' << a[i].date[1] << '.' << a[i].date[2] << '\t' << *a[i].line << std::endl;
+    }
 }
 
 int main()
@@ -55,7 +56,6 @@ int main()
         }
     }
 
-    //todo чот хуйня
     for (int time : TIME_LENGTH)
     {
         bit = 1;
@@ -68,20 +68,11 @@ int main()
         current_date++;
     }
 
-    prnt(buffer[count % 2]);
+    Prnt(buffer[count % 2]);
 
-    // Prnt(buffer[(count) % 2]);
     delete[] lines;
     delete[] keys1;
     delete[] keys2;
     return 0;
 }
 
-void prnt(TKey *a)
-{
-
-    for (int i = 0; i < TOTAL_LINES; i++)
-    {
-        cout << *a[i].line << endl;
-    }
-}

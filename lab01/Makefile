@@ -5,14 +5,14 @@ TARGET=lab01
 CXX=g++
 all: $(TARGET)
 
-func.o: func.cpp struct.hpp 
-	$(CXX) $(KEYS) func.cpp -c 
+struct.o: struct.cpp struct.hpp 
+	$(CXX) $(KEYS) struct.cpp -c 
 
 main.o: struct.hpp main.cpp
 	$(CXX) $(KEYS) main.cpp -c
 
-$(TARGET): main.o func.o 
-	$(CXX) $(KEYS) -o $(TARGET) main.o func.o -lm
+$(TARGET): main.o struct.o 
+	$(CXX) $(KEYS) -o $(TARGET) main.o struct.o -lm
 
 clean:
 	rm -rf *.o lab01
