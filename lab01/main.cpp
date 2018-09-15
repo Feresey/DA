@@ -12,10 +12,11 @@ void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit)
     int digit = 0;
     prnt(buf1);
     // cout << "write" << endl;
-    while (digit < TOTAL_LINES)
+    while (write_lines < TOTAL_LINES)
     {
         for (int item = 0; item < TOTAL_LINES; item++) //для всех элеменов buf1
         {
+            // cout << 'for '<< item<<endl;
             if ((buf1[item].date[date] / current_bit) % DECIMAL == digit) // равна ли цифра текущей проверяемой
             {
                 // if (buf1[item].line != buf2[write_lines].line) //защита от перезаписи
