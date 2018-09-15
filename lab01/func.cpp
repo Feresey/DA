@@ -21,7 +21,7 @@ TKey AddKey(const string input, string *line)
 
     key.date[YEAR] = stoi(input.substr(prev_pos + 1, pos - prev_pos)); //year
 
-    *line = input.substr(pos + 1, input.length() - 1); //input line without key
+    *line = input.substr(pos + 1, input.length()); //input line without key
     key.line = line;
 
     return key;
