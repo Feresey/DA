@@ -1,5 +1,5 @@
 .PHONY=all clean
-KEYS=-Wall -Wextra  -pedantic -Wno-sign-compare -Wno-long-long -g3
+KEYS=-Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long -g3
 TARGET=lab01
 # CXX=zapcc++
 CXX=g++
