@@ -3,34 +3,33 @@
 
 using namespace std;
 int TOTAL_LINES = 0;
-void RadixSort(const TKey *buf1, TKey *buf2, int date, int current_bit)
+
+// void prnt(TKey *a);
+
+void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit)
 {
-    // bool is_max_bit_place = true; //Достигнут максимальный разряд числа
-    // int write_lines = 0;
-    // int date = 0; //для переключения между днём, месяцем и годом
-
-    //todo данные будут перезаписываться, если во втором буфере они уже на своём мест
-
-    // is_max_bit_place = false;
-    for (int radix = 0; radix < 10; radix++) //пробег по цифрам
+    int write_lines = 0;
+    int digit = 0;
+    prnt(buf1);
+    // cout << "write" << endl;
+    while (digit < TOTAL_LINES)
     {
         for (int item = 0; item < TOTAL_LINES; item++) //для всех элеменов buf1
         {
-            if ((buf1[item].date[date] / current_bit) % DECIMAL == radix) //&& buf1[item].date[date] != buf2[item].date[date])
+            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit) // равна ли цифра текущей проверяемой
             {
-                buf2[item] = buf1[item];
+                // if (buf1[item].line != buf2[write_lines].line) //защита от перезаписи
+                // {
+                buf2[write_lines] = buf1[item];
+                cout << "item " << item << " bit " << current_bit << " date " << date << " digit " << digit << ' ' << *buf1[item].line << endl;
+
+                // }
+                write_lines++;
             }
         }
+        digit++; //увеличение проверяемой цифры на 1
     }
-    // return is_max_bit_place;
-}
-
-void Prnt(TKey *keys)
-{
-    for (int i = 0; i < MAX; i++)
-    {
-        cout << keys[i].date << endl;
-    }
+    cout << endl;
 }
 
 int main()
@@ -58,18 +57,30 @@ int main()
     //todo чот хуйня
     for (int time : TIME_LENGTH)
     {
+        bit = 1;
         for (int current_bit = 0; current_bit < time; current_bit++)
         {
-            RadixSort(buffer[count / 2], buffer[count / 2 + 1], current_date, bit);
+            RadixSort(buffer[count % 2], buffer[(count + 1) % 2], current_date, bit);
             bit *= DECIMAL;
             count++;
         }
         current_date++;
     }
 
-    // Prnt(buffer[count / 2]);
+    prnt(buffer[count % 2]);
+
+    // Prnt(buffer[(count) % 2]);
     delete[] lines;
     delete[] keys1;
     delete[] keys2;
     return 0;
+}
+
+void prnt(TKey *a)
+{
+
+    for (int i = 0; i < TOTAL_LINES; i++)
+    {
+        cout << *a[i].line << endl;
+    }
 }
