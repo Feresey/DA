@@ -11,12 +11,10 @@ const int DECIMAL = 10;
 
 typedef struct
 {
-    int date[DATE_LENGTH]; //Day, mounth and year
+    unsigned short int date[DATE_LENGTH]; //Day, mounth and year
     std::string *line;     //указатель на строку (для экономии памяти)
 } TKey;
 
 TKey AddKey(std::string input, std::string *line);
-
-void RadixSort(TKey *buf1, TKey *buf2, const int date, const int current_bit);
 
 #endif //STRUCT_H
