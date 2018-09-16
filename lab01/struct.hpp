@@ -2,7 +2,7 @@
 #define STRUCT_H
 #include <iostream>
 
-const int MAX = 500;
+const int MAX = 5000;
 const int LEN = 64;
 const int DATE_LENGTH = 3; //Day, mounth and year
 const int DAY = 0, MONTH = 1, YEAR = 2;
