@@ -2,6 +2,7 @@
 KEYS=-std=c++14 -Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long 
 TARGET=lab01
 CXX=g++
+
 all: $(TARGET)
 
 struct.o: struct.cpp struct.hpp 

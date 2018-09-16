@@ -11,7 +11,6 @@ TKey AddKey(const std::string input, std::string *line)
     const int SIZE_OF_DELIMITER = 1;
     int prev_pos = -1;
     int pos = input.find(delimiter[0]);
-    // int string_length;
 
     key.date[DAY] = stoi(input.substr(prev_pos + SIZE_OF_DELIMITER, pos - prev_pos)); //day
     prev_pos = pos;
@@ -23,9 +22,7 @@ TKey AddKey(const std::string input, std::string *line)
 
     key.date[YEAR] = stoi(input.substr(prev_pos + SIZE_OF_DELIMITER, pos - prev_pos)); //year
 
-    // string_length = input.length() - (pos + SIZE_OF_DELIMITER); 
     *line = input;
-    // *line = input.substr(pos + SIZE_OF_DELIMITER, string_length) + empty_string.substr(0, LEN - string_length); //input line without key
     key.line = line;
 
     return key;
