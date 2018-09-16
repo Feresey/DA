@@ -1,5 +1,5 @@
 .PHONY=all clean
-KEYS=-std=c++14 -Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long -g3
+KEYS=-std=c++14 -Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long 
 TARGET=lab01
 CXX=zapcc++
 # CXX=g++
