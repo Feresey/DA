@@ -23,7 +23,7 @@ TKey AddKey(const std::string input, std::string *line)
 
     key.date[YEAR] = stoi(input.substr(prev_pos + SIZE_OF_DELIMITER, pos - prev_pos)); //year
 
-    // string_length = input.length() - (pos + SIZE_OF_DELIMITER);
+    // string_length = input.length() - (pos + SIZE_OF_DELIMITER); 
     *line = input;
     // *line = input.substr(pos + SIZE_OF_DELIMITER, string_length) + empty_string.substr(0, LEN - string_length); //input line without key
     key.line = line;

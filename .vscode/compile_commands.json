@@ -1,7 +1,7 @@
 [
     {
         "directory": "/home/lol/Desktop/DA/lab01",
-        "command": "make",
+        "command": "g++",
         "file": "/home/lol/Desktop/DA/lab01/{main,struct}.cpp"
     }
 ]
