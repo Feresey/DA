@@ -1,8 +1,8 @@
 .PHONY=all clean
-KEYS=-Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long -g3
+KEYS=-std=c++14 -Wall -Wextra -Werror -pedantic -Wno-sign-compare -Wno-long-long -g3
 TARGET=lab01
-# CXX=zapcc++
-CXX=g++
+CXX=zapcc++
+# CXX=g++
 all: $(TARGET)
 
 struct.o: struct.cpp struct.hpp 
