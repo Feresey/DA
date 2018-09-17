@@ -5,7 +5,7 @@ using namespace std;
 
 int TOTAL_LINES = 0;
 
-void RadixSort(TKey *buf1, TKey *buf2, const int &date, const int &current_bit)
+void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit)
 {
     int write_lines = 0;
     int digit = 0; //текущая цифра
@@ -33,13 +33,17 @@ int main()
     int current_date = 0;
     int count = 0;
 
-    string lines[MAX];
+    string *lines = new string[MAX];
+    // string lines[MAX];
 
     string input;
 
-    TKey input_lines[MAX];
-    TKey second_buffer[MAX];
+    TKey *input_lines = new TKey[MAX + 1];
+    TKey *second_buffer = new TKey[MAX + 1];
     TKey *buffer[2] = {input_lines, second_buffer};
+    // TKey input_lines[MAX];
+    // TKey second_buffer[MAX];
+    // TKey *buffer[2] = {input_lines, second_buffer};
 
     while (getline(cin, input))
     {
@@ -58,7 +62,6 @@ int main()
         bit = 1;
         for (int current_bit = 0; current_bit < time; current_bit++) //цикл для каждого десятка
         {
-
             RadixSort(buffer[count % 2], buffer[(count + 1) % 2], current_date, bit);
             bit *= DECIMAL; //переход на следующую цифру
             count++;        //для смены первого и второго буферов
@@ -68,12 +71,15 @@ int main()
 
     for (int i = 0; i < TOTAL_LINES; i++)
     {
-        cout << *buffer[count % 2][i].line << endl;
+        if (buffer[count % 2][i].line)
+        {
+            cout << *buffer[count % 2][i].line << endl;
+        }
     }
 
-    // delete[] lines;
-    // delete[] input_lines;
-    // delete[] second_buffer;
+    delete[] lines;
+    delete[] input_lines;
+    delete[] second_buffer;
 
     return 0;
 }

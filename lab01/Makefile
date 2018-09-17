@@ -1,5 +1,5 @@
 .PHONY=all clean
-KEYS=-pedantic -Wall -Werror -Wno-sign-compare -Wno-long-long -lm
+KEYS=-pedantic -Wall -Wextra -Wpedantic -Werror -Wno-sign-compare -Wno-long-long -g3
 TARGET=lab01
 CXX=g++
 
@@ -12,7 +12,7 @@ main.o: struct.hpp main.cpp
 	$(CXX) $(KEYS) main.cpp -c
 
 $(TARGET): main.o struct.o 
-	$(CXX) $(KEYS) -o $(TARGET) main.o struct.o
+	$(CXX) $(KEYS) -o $(TARGET) main.o struct.o -lm
 
 clean:
 	rm -rf *.o lab01
