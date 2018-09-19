@@ -42,5 +42,8 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "algorithm": "cpp"
-    }
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "C_Cpp.clang_format_sortIncludes": true
 }
