@@ -1,5 +1,6 @@
 #include <iostream>
 #include "struct.hpp"
+#include <stdio.h>
 
 using namespace std;
 
@@ -7,20 +8,20 @@ int TOTAL_LINES = 0;
 
 void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit)
 {
-    int write_lines1 = 0;
+    int write_lines = 0;
     int digit = 0; //текущая цифра
 
-    while (write_lines1 < TOTAL_LINES)
+    while (write_lines < TOTAL_LINES)
     {
         for (int item = 0; item < TOTAL_LINES; item++) //для всех элеменов buf1
         {
             if ((buf1[item].date[date] / current_bit) % DECIMAL == digit) // равна ли цифра текущей проверяемой
             {
-                if (&buf2[write_lines1] != &buf1[item])
+                if (&buf2[write_lines] != &buf1[item])
                 {
-                    buf2[write_lines1] = buf1[item];
+                    buf2[write_lines] = buf1[item];
                 }
-                write_lines1++;
+                write_lines++;
             }
         }
         digit++; //увеличение проверяемой цифры на 1
@@ -31,7 +32,6 @@ template <typename T>
 T *Resize(T array[], size_t total_length, size_t size)
 {
     T *res = new T[size];
-    // copy(array[0], array[total_length], res);
 
     for (size_t i = 0; i < total_length; i++)
     {
@@ -52,6 +52,7 @@ int main()
     string input;
 
     TKey *keys1 = new TKey[MAX];
+    ios_base::sync_with_stdio(false);
 
     while (getline(cin, input))
     {
@@ -69,13 +70,6 @@ int main()
                     keys1[i].line = &lines[i];
                 }
             }
-            // if (TOTAL_LINES++ % MAX == MAX - 1)
-            // {
-            //     lines[(count_lines + 1) % 2] = new string[TOTAL_LINES + MAX];
-            //     copy(&lines[count_lines % 2][0], &lines[count_lines % 2][TOTAL_LINES], lines[count_lines % 2]);
-            //     delete[] lines[count % 2];
-            //     count_lines++;
-            // }
         }
     }
 
@@ -96,10 +90,7 @@ int main()
 
     for (int i = 0; i < TOTAL_LINES; i++)
     {
-        if (keys[count % 2][i].line)
-        {
-            cout << *keys[count % 2][i].line << endl;
-        }
+        printf("%s\n", keys[count % 2][i].line->c_str());
     }
 
     delete[] lines;

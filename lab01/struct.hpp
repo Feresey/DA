@@ -2,8 +2,7 @@
 #define STRUCT_H
 #include <iostream>
 
-const int MAX = 1000;
-const int LEN = 64;
+const int MAX = 100000;
 const int DATE_LENGTH = 3; //Day, mounth and year
 const int DAY = 0, MONTH = 1, YEAR = 2;
 const int TIME_LENGTH[3] = {2, 2, 4};
@@ -16,6 +15,4 @@ struct TKey
 };
 TKey AddKey(std::string input, std::string *line);
 
-// template <typename T>
-// T *Resize(T array[], size_t total_length, size_t size);
 #endif //STRUCT_H
