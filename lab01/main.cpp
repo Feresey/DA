@@ -13,9 +13,7 @@ void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current
     while (write_lines < TOTAL_LINES){
         for (int item = 0; item < TOTAL_LINES; item++){ //для всех элеменов buf1
             if ((buf1[item].date[date] / current_bit) % DECIMAL == digit){ // равна ли цифра текущей проверяемой
-                if (buf2[write_lines].line != buf1[item].line){ //защита от перезаписи
-                    buf2[write_lines] = buf1[item];
-                }
+                buf2[write_lines] = buf1[item];
                 write_lines++;
             }
         }
@@ -32,7 +30,7 @@ int main(){
     string input;
 
     TKey *keys1 = new TKey[MAX]; //основной массив ключей 
-    ios_base::sync_with_stdio(false); //? нашел на сайте, так чуть быстрее
+    // ios_base::sync_with_stdio(false); //? нашел на сайте, так чуть быстрее
 
     while (getline(cin, input)){
         if (input != ""){
