@@ -10,7 +10,7 @@
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64",
-            "compileCommands": "${workspaceFolder}/.vscode/compile_commands.json"
+            "compileCommands": "${workspaceRoot}/.vscode/compile.json"
         }
     ],
     "version": 4
