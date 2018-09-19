@@ -12,6 +12,7 @@ struct TKey{
     unsigned short int date[DATE_LENGTH]; //Day, mounth and year
     std::string *line;                    //указатель на строку (для экономии памяти)
 };
+
 TKey AddKey(std::string input, std::string *line);
 
 template <typename T>

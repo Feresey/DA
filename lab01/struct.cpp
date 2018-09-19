@@ -22,7 +22,6 @@ TKey AddKey(const std::string input, std::string *line){
     key.date[YEAR] = stoi(input.substr(prev_pos + SIZE_OF_DELIMITER, pos - prev_pos)); //year
 
     *line = input;
-    key.line = line;
 
     return key;
 }
