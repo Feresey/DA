@@ -6,19 +6,14 @@ using namespace std;
 
 int TOTAL_LINES = 0;
 
-void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit)
-{
+void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit){
     int write_lines = 0;
     int digit = 0; //текущая цифра
 
-    while (write_lines < TOTAL_LINES)
-    {
-        for (int item = 0; item < TOTAL_LINES; item++) //для всех элеменов buf1
-        {
-            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit) // равна ли цифра текущей проверяемой
-            {
-                if (&buf2[write_lines] != &buf1[item])
-                {
+    while (write_lines < TOTAL_LINES){
+        for (int item = 0; item < TOTAL_LINES; item++){ //для всех элеменов buf1
+            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit){ // равна ли цифра текущей проверяемой
+                if (&buf2[write_lines] != &buf1[item]){
                     buf2[write_lines] = buf1[item];
                 }
                 write_lines++;
@@ -28,8 +23,7 @@ void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current
     }
 }
 
-int main()
-{
+int main(){
     int bit = 1;
     int current_date = 0;
     int count = 0;
@@ -40,19 +34,15 @@ int main()
     TKey *keys1 = new TKey[MAX];
     ios_base::sync_with_stdio(false);
 
-    while (getline(cin, input))
-    {
-        if (input != "")
-        {
+    while (getline(cin, input)){
+        if (input != ""){
             keys1[TOTAL_LINES] = AddKey(input, &lines[TOTAL_LINES]);
             TOTAL_LINES++;
-            if (TOTAL_LINES % MAX == MAX - 1)
-            {
+            if (TOTAL_LINES % MAX == MAX - 1){
                 lines = Resize(lines, TOTAL_LINES, TOTAL_LINES + MAX);
                 keys1 = Resize(keys1, TOTAL_LINES, TOTAL_LINES + MAX);
 
-                for (size_t i = 0; i < TOTAL_LINES; i++)
-                {
+                for (size_t i = 0; i < TOTAL_LINES; i++){
                     keys1[i].line = &lines[i];
                 }
             }
@@ -62,11 +52,9 @@ int main()
     TKey *keys2 = new TKey[TOTAL_LINES];
     TKey *keys[2] = {keys1, keys2};
 
-    for (int time : TIME_LENGTH) //длина дня, месяца и года
-    {
+    for (int time : TIME_LENGTH){ //длина дня, месяца и года
         bit = 1;
-        for (int current_bit = 0; current_bit < time; current_bit++) //цикл для каждого десятка
-        {
+        for (int current_bit = 0; current_bit < time; current_bit++){ //цикл для каждого десятка
             RadixSort(keys[count % 2], keys[(count + 1) % 2], current_date, bit);
             bit *= DECIMAL; //переход на следующую цифру
             count++;        //для смены первого и второго буферов
@@ -74,9 +62,9 @@ int main()
         current_date++; //надеюсь, очевидно :D
     }
 
-    for (int i = 0; i < TOTAL_LINES; i++)
-    {
-        printf("%s\n", keys[count % 2][i].line->c_str()); //так работает на 0.2 секунды быстрее чем cout
+    for (int i = 0; i < TOTAL_LINES; i++){
+        printf("%s\n", keys[count % 2][i].line->c_str());
+        //так работает на 0.2 секунды быстрее чем cout
     }
 
     delete[] lines;

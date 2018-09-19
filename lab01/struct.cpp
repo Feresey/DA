@@ -3,8 +3,7 @@
 
 using namespace std;
 
-TKey AddKey(const std::string input, std::string *line)
-{
+TKey AddKey(const std::string input, std::string *line){
     TKey key;
 
     char delimiter[2] = {'.', '\t'};
