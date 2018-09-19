@@ -28,20 +28,6 @@ void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current
     }
 }
 
-template <typename T>
-T *Resize(T array[], size_t total_length, size_t size)
-{
-    T *res = new T[size];
-
-    for (size_t i = 0; i < total_length; i++)
-    {
-        res[i] = array[i];
-    }
-
-    delete[] array;
-    return res;
-}
-
 int main()
 {
     int bit = 1;
@@ -90,7 +76,7 @@ int main()
 
     for (int i = 0; i < TOTAL_LINES; i++)
     {
-        printf("%s\n", keys[count % 2][i].line->c_str());
+        printf("%s\n", keys[count % 2][i].line->c_str()); //так работает на 0.2 секунды быстрее чем cout
     }
 
     delete[] lines;

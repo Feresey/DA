@@ -15,4 +15,18 @@ struct TKey
 };
 TKey AddKey(std::string input, std::string *line);
 
+template <typename T>
+T *Resize(T array[], size_t total_length, size_t size)
+{
+    T *res = new T[size];
+
+    for (size_t i = 0; i < total_length; i++)
+    {
+        res[i] = array[i];
+    }
+
+    delete[] array;
+    return res;
+}
+
 #endif //STRUCT_H
