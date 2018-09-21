@@ -35,7 +35,8 @@ int main(){
 
     while (getline(cin, input)){
         if (input != ""){
-            keys1[TOTAL_LINES] = AddKey(input, &lines[TOTAL_LINES]); //добавление нового ключа
+            lines[TOTAL_LINES] = input;
+            keys1[TOTAL_LINES] = AddKey(input); //добавление нового ключа
             TOTAL_LINES++;
             if (TOTAL_LINES % MAX == MAX - 1){ //довыделение памяти, если необходимо
                 lines = Resize(lines, TOTAL_LINES, TOTAL_LINES + MAX);

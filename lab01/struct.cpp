@@ -3,7 +3,7 @@
 
 using namespace std;
 
-TKey AddKey(const std::string input, std::string *line){
+TKey AddKey(const std::string input){
     TKey key;
 
     char delimiter[2] = {'.', '\t'};
@@ -20,8 +20,6 @@ TKey AddKey(const std::string input, std::string *line){
     pos = input.find(delimiter[1], pos + SIZE_OF_DELIMITER);
 
     key.date[YEAR] = stoi(input.substr(prev_pos + SIZE_OF_DELIMITER, pos - prev_pos)); //year
-
-    *line = input;
 
     return key;
 }
