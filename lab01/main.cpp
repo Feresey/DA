@@ -30,7 +30,8 @@ int main(){
     string input;
 
     TKey *keys1 = new TKey[MAX]; //основной массив ключей 
-    // ios_base::sync_with_stdio(false); //? нашел на сайте, так чуть быстрее
+    // ios_base::sync_with_stdio(false);
+    //? нашел на сайте, так чуть быстрее но valgrind выдаёт ошибку
 
     while (getline(cin, input)){
         if (input != ""){
@@ -43,7 +44,7 @@ int main(){
         }
     }
 
-    for (size_t i = 0; i < TOTAL_LINES; i++){ //и создание новых ссылок на строки у каждого из ключей
+    for (size_t i = 0; i < TOTAL_LINES; i++){ //создание ссылок на строки у каждого из ключей
         keys1[i].line = &lines[i];
     }
 

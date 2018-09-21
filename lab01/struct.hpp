@@ -26,5 +26,4 @@ T *Resize(T array[], size_t total_length, size_t size){
     delete[] array;
     return res;
 }
-
 #endif //STRUCT_H
