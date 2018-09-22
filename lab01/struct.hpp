@@ -2,6 +2,7 @@
 #define STRUCT_H
 #include <iostream>
 
+const int LEN = 78;
 const int MAX = 100000;
 const int DATE_LENGTH = 3; //Day, mounth and year
 const int DAY = 0, MONTH = 1, YEAR = 2;
@@ -10,10 +11,12 @@ const int DECIMAL = 10;
 
 struct TKey{
     unsigned short int date[DATE_LENGTH]; //Day, mounth and year
-    std::string *line;                    //указатель на строку (для экономии памяти)
+    char line[LEN];                        //указатель на строку (для экономии памяти)
 };
 
-TKey AddKey(std::string input);
+TKey AddKey(char * input);
+
+void Copy(char *to_line, char *from_line);
 
 template <typename T>
 T *Resize(T array[], size_t total_length, size_t size){
