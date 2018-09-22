@@ -31,7 +31,8 @@ int main(){
 
     TKey *keys1 = new TKey[MAX]; //основной массив ключей 
     ios_base::sync_with_stdio(false);
-    // //? нашел на сайте, так чуть быстрее но valgrind выдаёт ошибку
+    //? нашел на сайте, так чуть быстрее но valgrind выдает ошибки освобождения памяти, 
+    //? хотя конечный счётчик ошибок выгдядит так: ERROR SUMMARY: 0 errors from 0 contexts
     cin.tie(NULL);
     while (getline(cin, input)){
         if (input != ""){
