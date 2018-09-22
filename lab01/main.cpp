@@ -30,9 +30,9 @@ int main(){
     string input;
 
     TKey *keys1 = new TKey[MAX]; //основной массив ключей 
-    // ios_base::sync_with_stdio(false);
-    //? нашел на сайте, так чуть быстрее но valgrind выдаёт ошибку
-
+    ios_base::sync_with_stdio(false);
+    // //? нашел на сайте, так чуть быстрее но valgrind выдаёт ошибку
+    cin.tie(NULL);
     while (getline(cin, input)){
         if (input != ""){
             lines[TOTAL_LINES] = input;
@@ -65,6 +65,7 @@ int main(){
     for (int i = 0; i < TOTAL_LINES; i++){
         printf("%s\n", keys[count % 2][i].line->c_str());
         //так работает на 0.2 секунды быстрее чем cout
+        // cout << *keys[count % 2][i].line << endl;
     }
 
     delete[] lines;
