@@ -25,7 +25,9 @@ int StringToInt(char *input_string, size_t from_pos, size_t to_pos)
         number[symbol++] = input_string[i];
     }
     number[symbol] = '\0';
-    return atoi(number);
+    int res = atoi(number);
+    delete[] number;
+    return res;
 }
 
 void Copy(char *to_line, char *from_line)
@@ -57,7 +59,7 @@ TKey AddKey(char *input)
 
     key.date[YEAR] = StringToInt(input, prev_pos + SIZE_OF_DELIMITER, pos); //year
 
-    key.line = new char[LEN];
+    // key.line = new char[LEN];
 
     return key;
 }

@@ -47,7 +47,10 @@ int main()
     while (fgets(input, LEN, stdin))
     {
         // std::cin.get(input, LEN);
-        std::cout << input;
+        // if (*input != '\n')
+        // {
+        //     std::cout << input;
+        // }
         // std::cin >> input;
         if (*input != '\n')
         {
@@ -60,10 +63,6 @@ int main()
                 lines = Resize(lines, TOTAL_LINES, TOTAL_LINES + MAX);
                 keys1 = Resize(keys1, TOTAL_LINES, TOTAL_LINES + MAX);
             }
-        }
-        else
-        {
-            break;
         }
     }
 
@@ -93,14 +92,14 @@ int main()
         // так работает на 0.2 секунды быстрее чем cout
         std::cout << keys[count % 2][i].line << std::endl;
     }
-    delete[] input;
-    for (int i; i < TOTAL_LINES; i++)
+
+    for (int i = 0; i < TOTAL_LINES; i++)
     {
         delete[] lines[i];
-        delete[] keys1[i].line;
     }
-    delete[] lines;
 
+    delete[] lines;
+    delete[] input;
     delete[] keys1;
     delete[] keys2;
 
