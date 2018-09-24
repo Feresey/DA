@@ -18,8 +18,8 @@ int Find(const char *line, size_t start_pos, const char delimiter)
 
 int StringToInt(char *input_string, size_t from_pos, size_t to_pos)
 {
-    char *number = new char[to_pos - from_pos+1]; // По условию 2 - это максимальная длина переводимой строки
-    int symbol = 0;                             // Итератор для записи в переменную number
+    char *number = new char[5]; // По условию 4 - это максимальная длина переводимой строки
+    int symbol = 0;             // Итератор для записи в переменную number
     for (int i = from_pos; i < to_pos; i++)
     {
         number[symbol++] = input_string[i];
