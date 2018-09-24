@@ -1,6 +1,7 @@
 #include "struct.hpp"
 #include <cstdio>
 #include <iostream>
+#include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
 // using namespace std;
@@ -43,14 +44,14 @@ int main()
     //? ERROR SUMMARY: 0 errors from 0 contexts
     // cin.tie(NULL);
 
-    while (true)
+    while (fgets(input, LEN, stdin))
     {
         // std::cin.get(input, LEN);
-        fgets(input, LEN, stdin);
         std::cout << input;
         // std::cin >> input;
-        if (input[0] != EOF)
+        if (*input != '\n')
         {
+            lines[TOTAL_LINES] = new char[LEN];
             Copy(lines[TOTAL_LINES], input);
             keys1[TOTAL_LINES] = AddKey(input); //добавление нового ключа
             TOTAL_LINES++;
@@ -68,7 +69,7 @@ int main()
 
     for (size_t i = 0; i < TOTAL_LINES; i++)
     { //создание ссылок на строки у каждого из ключей
-        Copy(keys1[i].line, lines[i]);
+        keys1[i].line = lines[i];
     }
 
     TKey *keys2 = new TKey[TOTAL_LINES]; //вспомогательный буффер для сортировки
@@ -92,8 +93,14 @@ int main()
         // так работает на 0.2 секунды быстрее чем cout
         std::cout << keys[count % 2][i].line << std::endl;
     }
-
+    delete[] input;
+    for (int i; i < TOTAL_LINES; i++)
+    {
+        delete[] lines[i];
+        delete[] keys1[i].line;
+    }
     delete[] lines;
+
     delete[] keys1;
     delete[] keys2;
 
