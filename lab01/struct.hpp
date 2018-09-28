@@ -12,24 +12,15 @@ const int DECIMAL = 10;
 struct TKey
 {
     unsigned short int date[DATE_LENGTH]; //Day, mounth and year
-    char *line;                       //указатель на строку (для экономии памяти)
+    char *line;                           //указатель на строку (для экономии памяти)
 };
 
 TKey AddKey(char *input);
 
 void Copy(char *to_line, char *from_line);
 
-template <typename T>
-T *Resize(T array[], size_t total_length, size_t size)
-{
-    T *res = new T[size];
+TKey *Resize(TKey *array, size_t total_length, size_t size);
 
-    for (size_t i = 0; i < total_length; i++)
-    {
-        res[i] = array[i];
-    }
+char **Resize(char **array, size_t total_length, size_t size);
 
-    delete[] array;
-    return res;
-}
 #endif //STRUCT_H

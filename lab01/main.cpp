@@ -2,9 +2,6 @@
 #include <cstdio>
 #include <iostream>
 #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-// using namespace std;
 
 void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES)
 {
@@ -46,12 +43,6 @@ int main()
 
     while (fgets(input, LEN, stdin))
     {
-        // std::cin.get(input, LEN);
-        // if (*input != '\n')
-        // {
-        //     std::cout << input;
-        // }
-        // std::cin >> input;
         if (*input != '\n')
         {
             lines[TOTAL_LINES] = new char[LEN];
@@ -88,8 +79,6 @@ int main()
 
     for (int i = 0; i < TOTAL_LINES; i++)
     {
-        // printf("%s\n", keys[count % 2][i].line->c_str());
-        // так работает на 0.2 секунды быстрее чем cout
         std::cout << keys[count % 2][i].line << std::endl;
     }
 
