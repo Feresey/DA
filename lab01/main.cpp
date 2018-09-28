@@ -15,11 +15,13 @@ int main(){
 
     TKey *keys1 = new TKey[MAX]; //основной массив ключей
 
-    // ios_base::sync_with_stdio(false);
-    //? нашел на сайте, так чуть быстрее но valgrind выдает ошибки освобождения памяти,
+    std::ios_base::sync_with_stdio(false);
+    //! Рассинхронизация потоков вывода С и С++.
+    // Выгода заключается в том, что изменения одного буфера не влияют на изменение другого.
+    // То есть не копируются данные из потока в поток, что даёт некоторый прирост скорости.
+    // valgrind выдает ошибки освобождения памяти,
     //? хотя конечный счётчик ошибок выгдядит так:
     //? ERROR SUMMARY: 0 errors from 0 contexts
-    // cin.tie(NULL);
 
     while (fgets(input, LEN, stdin)){
         if (*input != '\n'){
@@ -55,7 +57,7 @@ int main(){
     }
 
     for (int i = 0; i < TOTAL_LINES; i++){
-        std::cout << keys[count % 2][i].line << std::endl;
+        printf("%s\n", keys[count % 2][i].line);
     }
 
     for (int i = 0; i < TOTAL_LINES; i++){
