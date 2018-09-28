@@ -1,7 +1,6 @@
 #include "struct.hpp"
 #include <cstdio>
 #include <iostream>
-#include <stdio.h>
 
 int main(){
     int TOTAL_LINES = 0;
