@@ -1,5 +1,4 @@
 #include "struct.hpp"
-#include <iostream>
 
 void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES){
     int write_lines = 0;
