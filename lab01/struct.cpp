@@ -1,6 +1,25 @@
 #include "struct.hpp"
 #include <iostream>
 
+void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES)
+{
+    int write_lines = 0;
+    int digit = 0; //текущая цифра
+
+    while (write_lines < TOTAL_LINES)
+    {
+        for (int item = 0; item < TOTAL_LINES; item++)
+        { //для всех элеменов buf1
+            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit)
+            { // равна ли цифра текущей проверяемой
+                buf2[write_lines] = buf1[item];
+                write_lines++;
+            }
+        }
+        digit++; //увеличение проверяемой цифры на 1
+    }
+}
+
 TKey *Resize(TKey array[], size_t total_length, size_t size){
     TKey *res = new TKey[size];
 

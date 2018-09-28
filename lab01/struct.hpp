@@ -14,6 +14,8 @@ struct TKey{
     char *line;                           //указатель на строку (для экономии памяти)
 };
 
+void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES);
+
 TKey AddKey(char *input);
 
 void Copy(char *to_line, char *from_line);
