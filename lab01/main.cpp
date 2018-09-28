@@ -3,17 +3,13 @@
 #include <iostream>
 #include <stdio.h>
 
-void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES)
-{
+void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current_bit, int &TOTAL_LINES){
     int write_lines = 0;
     int digit = 0; //текущая цифра
 
-    while (write_lines < TOTAL_LINES)
-    {
-        for (int item = 0; item < TOTAL_LINES; item++)
-        { //для всех элеменов buf1
-            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit)
-            { // равна ли цифра текущей проверяемой
+    while (write_lines < TOTAL_LINES){
+        for (int item = 0; item < TOTAL_LINES; item++){ //для всех элеменов buf1
+            if ((buf1[item].date[date] / current_bit) % DECIMAL == digit){ // равна ли цифра текущей проверяемой
                 buf2[write_lines] = buf1[item];
                 write_lines++;
             }
@@ -22,8 +18,7 @@ void RadixSort(const TKey *buf1, TKey *buf2, const int &date, const int &current
     }
 }
 
-int main()
-{
+int main(){
     int TOTAL_LINES = 0;
 
     int bit = 1;
@@ -41,35 +36,32 @@ int main()
     //? ERROR SUMMARY: 0 errors from 0 contexts
     // cin.tie(NULL);
 
-    while (fgets(input, LEN, stdin))
-    {
-        if (*input != '\n')
-        {
+    while (fgets(input, LEN, stdin)){
+        if (*input != '\n'){
             lines[TOTAL_LINES] = new char[LEN];
+            
             Copy(lines[TOTAL_LINES], input);
             keys1[TOTAL_LINES] = AddKey(input); //добавление нового ключа
+            
             TOTAL_LINES++;
-            if (TOTAL_LINES % MAX == MAX - 1)
-            { //довыделение памяти, если необходимо
+
+            if (TOTAL_LINES % MAX == MAX - 1){ //довыделение памяти, если необходимо
                 lines = Resize(lines, TOTAL_LINES, TOTAL_LINES + MAX);
                 keys1 = Resize(keys1, TOTAL_LINES, TOTAL_LINES + MAX);
             }
         }
     }
 
-    for (size_t i = 0; i < TOTAL_LINES; i++)
-    { //создание ссылок на строки у каждого из ключей
+    for (size_t i = 0; i < TOTAL_LINES; i++){ //создание ссылок на строки у каждого из ключей
         keys1[i].line = lines[i];
     }
 
     TKey *keys2 = new TKey[TOTAL_LINES]; //вспомогательный буффер для сортировки
     TKey *keys[2] = {keys1, keys2};      //ну надо же переключаться между буферами
 
-    for (int time : TIME_LENGTH)
-    { //длина дня, месяца и года
+    for (int time : TIME_LENGTH){ //длина дня, месяца и года
         bit = 1;
-        for (int current_bit = 0; current_bit < time; current_bit++)
-        { //цикл для каждого десятка
+        for (int current_bit = 0; current_bit < time; current_bit++){ //цикл для каждого десятка
             RadixSort(keys[count % 2], keys[(count + 1) % 2], current_date, bit, TOTAL_LINES);
             bit *= DECIMAL; //переход на следующую цифру
             count++;        //для смены первого и второго буферов
@@ -77,13 +69,11 @@ int main()
         current_date++; //надеюсь, очевидно :D
     }
 
-    for (int i = 0; i < TOTAL_LINES; i++)
-    {
+    for (int i = 0; i < TOTAL_LINES; i++){
         std::cout << keys[count % 2][i].line << std::endl;
     }
 
-    for (int i = 0; i < TOTAL_LINES; i++)
-    {
+    for (int i = 0; i < TOTAL_LINES; i++){
         delete[] lines[i];
     }
 

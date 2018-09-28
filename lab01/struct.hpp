@@ -9,8 +9,7 @@ const int DAY = 0, MONTH = 1, YEAR = 2;
 const int TIME_LENGTH[3] = {2, 2, 4};
 const int DECIMAL = 10;
 
-struct TKey
-{
+struct TKey{
     unsigned short int date[DATE_LENGTH]; //Day, mounth and year
     char *line;                           //указатель на строку (для экономии памяти)
 };
