@@ -20,17 +20,7 @@ TKey *Resize(TKey array[], size_t total_length, size_t size){
 
     for (size_t i = 0; i < total_length; i++){
         res[i] = array[i];
-    }
-
-    delete[] array;
-    return res;
-}
-
-char **Resize(char **array, size_t total_length, size_t size){
-    char **res = new char *[size];
-
-    for (size_t i = 0; i < total_length; i++){
-        res[i] = array[i];
+        *res[i].line = *array[i].line;
     }
 
     delete[] array;
@@ -72,6 +62,7 @@ void Copy(char *to_line, char *from_line){
 
 TKey AddKey(char *input){
     TKey key;
+    key.line = new char[LEN];
 
     char delimiter[2] = {'.', '\t'};
     const int SIZE_OF_DELIMITER = 1;
@@ -87,6 +78,8 @@ TKey AddKey(char *input){
     pos = Find(input, pos + SIZE_OF_DELIMITER, delimiter[1]);
 
     key.date[YEAR] = StringToInt(input, prev_pos + SIZE_OF_DELIMITER, pos); //year
+
+    Copy(key.line,input); 
 
     return key;
 }

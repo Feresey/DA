@@ -22,6 +22,4 @@ void Copy(char *to_line, char *from_line);
 
 TKey *Resize(TKey *array, size_t total_length, size_t size);
 
-char **Resize(char **array, size_t total_length, size_t size);
-
 #endif //STRUCT_H
