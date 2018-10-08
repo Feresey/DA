@@ -1,2 +1,2 @@
 *
-!./lab01/{*.hpp,*.cpp,Makefile,test}
+!./lab*/{*.hpp,*.cpp,Makefile,test}
