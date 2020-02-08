@@ -1,0 +1,13 @@
+*
+!CMake*
+!*.cpp
+!*.hpp
+!*.py
+!Makefile
+!build
+build/*
+!build/Makefile
+!.gitignore
+!dirty
+!fuck
+!checker
